@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Space Grotesk", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+}
+body {
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url("../images/bg-main-desktop.png");
+  background-repeat: no-repeat;
+  background-size: 33% 100%;
+  min-height: 100vh;
+}
+body .card-form {
+  position: absolute;
+  top: 30%;
+  left: 60%;
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(10px, 1fr));
+  grid-template-rows: repeat(4, 1fr);
+  width: 350px;
+}
+body .card-form .inputs {
+  padding: 0.5rem;
+  font-size: 18px;
+  border: 1px solid hsl(279, 6%, 55%);
+  border-radius: 6px;
+}
+body .card-form .labels {
+  display: block;
+  color: hsl(278, 68%, 11%);
+  margin-block: 0.3rem;
+  text-transform: uppercase;
+}
+body .card-form .card-holder-container {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 span;
+}
+body .card-form .card-number-container {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2 span;
+}
+body .card-form .exp-date-container {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 span;
+}
+body .card-form .exp-date-container .exp-date-inputs {
+  display: flex;
+}
+body .card-form .exp-date-container .exp-date-inputs input {
+  width: 50%;
+}
+body .card-form .cvc-container {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 span;
+}
+body .card-form #confirm-button {
+  grid-column: 2 span;
+}/*# sourceMappingURL=style.css.map */
