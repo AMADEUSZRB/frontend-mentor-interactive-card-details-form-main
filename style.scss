@@ -1,0 +1,170 @@
+$White: hsl(0, 0%, 100%);
+$Light-grayish-violet: hsl(270, 3%, 87%);
+$Dark-grayish-violet: hsl(279, 6%, 55%);
+$Very-dark-violet: hsl(278, 68%, 11%);
+$gap: 1rem;
+
+@mixin flexbox (
+  $display: flex,
+  $direction: row,
+  $placeContent: null,
+  $placeItems: null,
+  $wrap: null,
+  $shrink: null,
+  $grow: null,
+  $alignContent: null,
+  $justifyContent: null,
+  $alignItems: null,
+  $justifyItems: null) {
+
+    display: $display;
+    flex-direction: $direction;
+
+    @if $placeContent == null {
+      @if $alignContent   { align-content: $alignContent; }
+      @if $justifyContent { justify-content: $justifyContent; }
+    } @else {
+      place-content: $placeContent;
+    }
+
+    @if $placeItems == null {
+      @if $alignItems   { align-items: $alignItems; }
+      @if $justifyItems { justify-items: $justifyItems; }
+    } @else {
+      place-items: $placeItems;
+    }
+
+    flex-wrap: $wrap;
+    flex-shrink: $shrink;
+    flex-grow: $grow;
+}
+
+
+*,*>* {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  @include flexbox($alignItems: center, $justifyContent: center);
+  background: url("../images/bg-main-desktop.png") no-repeat;
+  background-size: 33% 100%;
+  min-height: 100vh;
+  .left-container {
+    width: 55%;
+    padding: 2rem;
+    .card-front {
+      background: url("../images/bg-card-front.png") no-repeat;
+      height: 245px;
+      width: 447px;
+      padding: 1.75rem;
+      margin: 0 auto 2rem auto;
+      .emblems {
+        @include flexbox($alignItems: center);
+        position: relative;
+        #big-circle {
+          border-radius: 50%;
+          margin-right: 14px;
+          width: 45px;
+          height: 45px;
+          background-color: $White;
+        }
+        #small-circle {
+          border-radius: 50%;
+          width: 18px;
+          height: 18px;
+          border: 1px solid $White;
+        }
+      }
+      #card-number {
+
+      }
+      #cardholder-name {
+
+      }
+      #month-exp-date {
+
+      }
+    }
+    .card-back {
+      background: url("../images/bg-card-back.png") no-repeat;
+      position: relative;
+      inset: 20% 0 0 10%;
+      padding: 2rem;
+      height: 245px;
+      width: 447px;
+      margin: auto;
+      #cvc {
+        position: relative;
+        inset: 77px 0 0 325px;
+        color: $White;
+        font-size: 14px;
+        letter-spacing: .1rem;
+      }
+    }
+  }
+  .right-container {
+    width: 45%;
+    .card-form {
+      display: grid;
+      position: relative;
+      grid-template-columns: repeat(2, minmax(10px, 1fr));
+      grid-template-rows: repeat(4,1fr);
+      inset: 0 0 0 10%;
+      gap: $gap;
+      max-width: 350px;
+      .inputs {
+        padding: .6rem .8rem;
+        font-size: 18px;
+        border: 1px solid $Light-grayish-violet;
+        border-radius: .375rem;
+      }
+        .inputs::placeholder {
+          color: $Light-grayish-violet;
+        }
+      .labels {
+        display: block;
+        font-size: 12px;
+        color: $Very-dark-violet;
+        margin-block: .5rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+      .card-holder-container {
+        @include flexbox($direction:column);
+        grid-column: 2 span;
+      }
+      .card-number-container {
+        @include flexbox($direction:column);
+        grid-column: 2 span;
+      }
+      .exp-date-container {
+        @include flexbox($direction:column);
+        grid-column: 1 span;
+        .exp-date-inputs {
+          @include flexbox();
+          input {
+            width: 50%;
+            margin-right: 10px;
+          }
+        }
+      }
+      .cvc-container {
+        @include flexbox($direction:column);
+        grid-column: 1 span;
+      }
+      #confirm-button {
+        font-size: 16px;
+        grid-column: 2 span;
+        color: $White;
+        background-color: $Very-dark-violet;
+        height: 50px;
+        margin-top: $gap;
+        border-radius: .5rem;
+        border: none;
+      }
+    }
+  }
+}

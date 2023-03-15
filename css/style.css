@@ -1,65 +1,130 @@
-@font-face {
-  font-family: "Space Grotesk", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
-}
-body {
+*, * > * {
   font-family: "Space Grotesk", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-image: url("../images/bg-main-desktop.png");
-  background-repeat: no-repeat;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/bg-main-desktop.png") no-repeat;
   background-size: 33% 100%;
   min-height: 100vh;
 }
-body .card-form {
-  position: absolute;
-  top: 30%;
-  left: 60%;
-  gap: 1rem;
+body .left-container {
+  width: 55%;
+  padding: 2rem;
+}
+body .left-container .card-front {
+  background: url("../images/bg-card-front.png") no-repeat;
+  height: 245px;
+  width: 447px;
+  padding: 1.75rem;
+  margin: 0 auto 2rem auto;
+}
+body .left-container .card-front .emblems {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+body .left-container .card-front .emblems #big-circle {
+  border-radius: 50%;
+  margin-right: 14px;
+  width: 45px;
+  height: 45px;
+  background-color: hsl(0, 0%, 100%);
+}
+body .left-container .card-front .emblems #small-circle {
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  border: 1px solid hsl(0, 0%, 100%);
+}
+body .left-container .card-back {
+  background: url("../images/bg-card-back.png") no-repeat;
+  position: relative;
+  inset: 20% 0 0 10%;
+  padding: 2rem;
+  height: 245px;
+  width: 447px;
+  margin: auto;
+}
+body .left-container .card-back #cvc {
+  position: relative;
+  inset: 77px 0 0 325px;
+  color: hsl(0, 0%, 100%);
+  font-size: 14px;
+  letter-spacing: 0.1rem;
+}
+body .right-container {
+  width: 45%;
+}
+body .right-container .card-form {
   display: grid;
+  position: relative;
   grid-template-columns: repeat(2, minmax(10px, 1fr));
   grid-template-rows: repeat(4, 1fr);
-  width: 350px;
+  inset: 0 0 0 10%;
+  gap: 1rem;
+  max-width: 350px;
 }
-body .card-form .inputs {
-  padding: 0.5rem;
+body .right-container .card-form .inputs {
+  padding: 0.6rem 0.8rem;
   font-size: 18px;
-  border: 1px solid hsl(279, 6%, 55%);
-  border-radius: 6px;
+  border: 1px solid hsl(270, 3%, 87%);
+  border-radius: 0.375rem;
 }
-body .card-form .labels {
+body .right-container .card-form .inputs::placeholder {
+  color: hsl(270, 3%, 87%);
+}
+body .right-container .card-form .labels {
   display: block;
+  font-size: 12px;
   color: hsl(278, 68%, 11%);
-  margin-block: 0.3rem;
+  margin-block: 0.5rem;
   text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
-body .card-form .card-holder-container {
+body .right-container .card-form .card-holder-container {
   display: flex;
   flex-direction: column;
   grid-column: 2 span;
 }
-body .card-form .card-number-container {
+body .right-container .card-form .card-number-container {
   display: flex;
   flex-direction: column;
   grid-column: 2 span;
 }
-body .card-form .exp-date-container {
+body .right-container .card-form .exp-date-container {
   display: flex;
   flex-direction: column;
   grid-column: 1 span;
 }
-body .card-form .exp-date-container .exp-date-inputs {
+body .right-container .card-form .exp-date-container .exp-date-inputs {
   display: flex;
+  flex-direction: row;
 }
-body .card-form .exp-date-container .exp-date-inputs input {
+body .right-container .card-form .exp-date-container .exp-date-inputs input {
   width: 50%;
+  margin-right: 10px;
 }
-body .card-form .cvc-container {
+body .right-container .card-form .cvc-container {
   display: flex;
   flex-direction: column;
   grid-column: 1 span;
 }
-body .card-form #confirm-button {
+body .right-container .card-form #confirm-button {
+  font-size: 16px;
   grid-column: 2 span;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(278, 68%, 11%);
+  height: 50px;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border: none;
 }/*# sourceMappingURL=style.css.map */
