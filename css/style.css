@@ -24,6 +24,7 @@ body .left-container .card-front {
   width: 447px;
   padding: 1.75rem;
   margin: 0 auto 2rem auto;
+  color: hsl(0, 0%, 100%);
 }
 body .left-container .card-front .emblems {
   display: flex;
@@ -43,6 +44,20 @@ body .left-container .card-front .emblems #small-circle {
   width: 18px;
   height: 18px;
   border: 1px solid hsl(0, 0%, 100%);
+}
+body .left-container .card-front #card-number {
+  position: relative;
+  inset: 36% 0 0 0;
+  font-size: 24px;
+  letter-spacing: 6px;
+}
+body .left-container .card-front #cardholder-name {
+  position: relative;
+  inset: 50% 0 0 0;
+}
+body .left-container .card-front .month-and-year-exp-date-container {
+  position: relative;
+  inset: 40% 0 0 83.25%;
 }
 body .left-container .card-back {
   background: url("../images/bg-card-back.png") no-repeat;
@@ -67,8 +82,7 @@ body .right-container .card-form {
   display: grid;
   position: relative;
   grid-template-columns: repeat(2, minmax(10px, 1fr));
-  grid-template-rows: repeat(4, 1fr);
-  inset: 0 0 0 10%;
+  left: 10%;
   gap: 1rem;
   max-width: 350px;
 }
@@ -127,4 +141,38 @@ body .right-container .card-form #confirm-button {
   margin-top: 1rem;
   border-radius: 0.5rem;
   border: none;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 80% {
+    transform: translateX(5px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(-5px);
+  }
+  40%, 60% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.input-error {
+  animation: shake 0.5s;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .card-form, .left-container {
+    scale: 0.75;
+  }
+  body .right-container .card-form {
+    left: 4%;
+  }
 }/*# sourceMappingURL=style.css.map */

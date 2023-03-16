@@ -23,33 +23,35 @@
           <div id="big-circle"></div>
           <div id="small-circle"></div>
         </div>
-        <span id="card-number">0000 0000 0000 0000</span>
-        <span id="cardholder-name">Jane Appleseed</span>
-        <span id="month-exp-date">00</span>/<span id="year-exp-date">00</span>
+        <div id="card-number">0000 0000 0000 0000</div>
+        <div id="cardholder-name">JANE APPLESEED</div>
+        <div class="month-and-year-exp-date-container">
+          <span id="month-exp-date">00</span>/<span id="year-exp-date">00</span>
+        </div>
       </div>
       <div class="card-back">
         <span id="cvc">000</span>
       </div>
     </aside>
   <main class="right-container">
-    <form action="" class="card-form">
+    <form action="" class="card-form" novalidate>
       <div class="card-holder-container">
-        <label for="cardholder-name" class="labels">Cardholder Name</label>
+        <label for="cardholder-name-input" class="labels">Cardholder Name</label>
         <input type="text" class="inputs" id="cardholder-name-input" placeholder="e.g. Jane Appleseed">
       </div>
       <div class="card-number-container">
-        <label for="card-number" class="labels">Card Number</label>
-        <input type="text" class="inputs" id="card-number-input" placeholder="e.g. 1234 5678 9123 0000" maxlength="19">
+        <label for="card-number-input" class="labels">Card Number</label>
+        <input type="text" class="inputs" id="card-number-input" placeholder="e.g. 1234 5678 9123 0000">
       </div>
       <div class="exp-date-container">
-        <label for="month-exp-date" class="labels">Exp. Date (MM/YY)</label>
+        <label for="month-exp-date-input" class="labels">Exp. Date (MM/YY)</label>
         <div class="exp-date-inputs">
           <input type="text" class="inputs" id="month-exp-date-input" placeholder="MM" maxlength="2">
           <input type="text" class="inputs" id="year-exp-date-input" placeholder="YY" maxlength="2">
         </div>
       </div>
       <div class="cvc-container">
-        <label for="cvc" class="labels">CVC</label>
+        <label for="cvc-input" class="labels">CVC</label>
         <input type="text" class="inputs" id="cvc-input" placeholder="e.g. 123" maxlength="3">
       </div>
       <button type="submit" id="confirm-button">Confirm</button>
@@ -66,5 +68,6 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+  <script src="./script.js"></script>
 </body>
 </html>
