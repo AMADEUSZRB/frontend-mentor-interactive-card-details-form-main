@@ -56,8 +56,8 @@ body {
     padding: 2rem;
     .card-front {
       background: url("../images/bg-card-front.png") no-repeat;
-      height: 245px;
-      width: 447px;
+      height: 15.3125rem;
+      width: 27.9375rem;
       padding: 1.75rem;
       margin: 0 auto 2rem auto;
       color: $White;
@@ -90,7 +90,8 @@ body {
       }
       .month-and-year-exp-date-container {
         position: relative;
-        inset: 40% 0 0 83.25%;
+        width: fit-content;
+        inset: 37.5% 0 0 83.25%;
       }
     }
     .card-back {
@@ -98,12 +99,12 @@ body {
       position: relative;
       inset: 20% 0 0 10%;
       padding: 2rem;
-      height: 245px;
-      width: 447px;
+      height: 15.3125rem;
+      width: 27.9375rem;
       margin: auto;
       #cvc {
         position: relative;
-        inset: 77px 0 0 325px;
+        inset: 43% 0 0 85%;
         color: $White;
         font-size: 14px;
         letter-spacing: .1rem;
@@ -127,6 +128,12 @@ body {
       }
         .inputs::placeholder {
           color: $Light-grayish-violet;
+        }
+        .shake {
+          animation: shake 0.5s;
+        }
+        .input-error-border {
+          border: 1px red solid;
         }
       .labels {
         display: block;
@@ -182,9 +189,8 @@ body {
   40%, 60% { transform: translateX(5px); }
   100% { transform: translateX(0); }
 }
-
-.input-error {
-  animation: shake 0.5s;
+.error {
+  color: red;
 }
 
 @media only screen and (max-width : 1024px) {
