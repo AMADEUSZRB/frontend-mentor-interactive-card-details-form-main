@@ -1,4 +1,4 @@
-const form = document.querySelector("form");
+const form = document.querySelector(".card-form");
 const creditCardInput = document.querySelector("#card-number-input");
 const frontCardNumber = document.querySelector("#card-number");
 const cardHolderInput = document.querySelector("#cardholder-name-input");
@@ -10,18 +10,31 @@ const Year = document.querySelector("#year-exp-date");
 const cvcInput = document.querySelector("#cvc-input");
 const cvc = document.querySelector("#cvc");
 
-
 form.addEventListener('submit', e => {
     e.preventDefault();
     validateCardNumber(creditCardInput.value);
     validateExpiryMonth(MonthInput.value);
     validateCVC(cvcInput.value);
     validateExpiryYear(YearInput.value);
+
     if (validateCardHolderName(cardHolderInput.value) && validateCardNumber(creditCardInput.value) && validateExpiryMonth(MonthInput.value) && validateExpiryYear(YearInput.value) && validateCVC(cvcInput.value)) {
-        form.submit();
+        form.style.animation = "dissapear 1.5s ease forwards";
+        form.addEventListener("animationend", () => {
+            form.style.display = "none";
+            document.querySelector(".right-container").innerHTML = completeStateContainer();
+            
+        })
     }
 });
-
+const completeStateContainer = (message = 'THANK YOU!',details = "We've added your card details") => {
+    return `<div class="complete-state-container">
+    <img src="./images/icon-complete.svg" />
+    <span>${message}</span>
+    <span>${details}</span>
+    <button class="buttons">
+      Continue</button>
+    </div>`;
+}
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     let errorDisplay;

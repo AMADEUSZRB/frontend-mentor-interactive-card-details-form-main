@@ -7,15 +7,19 @@
 }
 
 body {
-  min-height: 100vh;
-}
-
-body {
   display: flex;
   flex-direction: row;
   align-items: center;
   background: url("../images/bg-main-desktop.png") no-repeat;
   background-size: 33% 100%;
+  min-height: 100vh;
+}
+body .show-menus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
 }
 body .left-container {
   display: flex;
@@ -86,17 +90,36 @@ body .right-container {
   align-items: center;
   width: 50%;
 }
+body .right-container .buttons {
+  font-size: 16px;
+  grid-column: 2 span;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(278, 68%, 11%);
+  height: 50px;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
 body .right-container .card-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(10px, 1fr));
   gap: 1rem;
   width: 350px;
+  animation: none;
 }
 body .right-container .card-form .inputs {
   padding: 0.6rem 0.8rem;
   font-size: 18px;
   border: 1px solid hsl(270, 3%, 87%);
   border-radius: 0.375rem;
+}
+body .right-container .card-form .inputs:focus {
+  outline: none;
+  border: double 1px transparent;
+  background-image: linear-gradient(white, white), linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 body .right-container .card-form .inputs::placeholder {
   color: hsl(270, 3%, 87%);
@@ -105,7 +128,7 @@ body .right-container .card-form .shake {
   animation: shake 0.5s;
 }
 body .right-container .card-form .input-error-border {
-  border: 1px red solid;
+  border: 1px hsl(0, 100%, 66%) solid;
 }
 body .right-container .card-form .labels {
   display: block;
@@ -144,15 +167,30 @@ body .right-container .card-form .cvc-container {
   flex-direction: column;
   grid-column: 1 span;
 }
-body .right-container .card-form #confirm-button {
-  font-size: 16px;
-  grid-column: 2 span;
-  color: hsl(0, 0%, 100%);
-  background-color: hsl(278, 68%, 11%);
-  height: 50px;
-  margin-top: 1rem;
-  border-radius: 0.5rem;
-  border: none;
+body .right-container .complete-state-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 375px;
+  min-width: 325px;
+  gap: 15px;
+}
+body .right-container .complete-state-container img {
+  margin-bottom: 16px;
+}
+body .right-container .complete-state-container > span:nth-child(2) {
+  color: hsl(278, 68%, 11%);
+  font-size: 27px;
+  letter-spacing: 4px;
+}
+body .right-container .complete-state-container > span:nth-child(3) {
+  color: hsl(279, 6%, 55%);
+  font-size: 18px;
+}
+body .right-container .complete-state-container button {
+  margin-top: 30px;
+  width: 100%;
 }
 
 @keyframes shake {
@@ -175,8 +213,14 @@ body .right-container .card-form #confirm-button {
     transform: translateX(0);
   }
 }
+@keyframes dissapear {
+  100% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+}
 .error {
-  color: red;
+  color: hsl(0, 100%, 66%);
 }
 
 @media only screen and (max-width: 1024px) {
@@ -186,6 +230,9 @@ body .right-container .card-form #confirm-button {
   }
   body .right-container .card-form {
     left: 4%;
+  }
+  .complete-state-container {
+    scale: 0.85;
   }
 }
 @media only screen and (max-width: 750px) {
@@ -200,19 +247,19 @@ body .right-container .card-form #confirm-button {
   body .left-container {
     scale: 1;
     width: 100%;
-    min-height: 300px;
+    min-height: 270px;
   }
   body .left-container .card-front {
     position: absolute;
-    inset: 14% -5.5rem;
-    scale: 0.6;
+    inset: 17% -5.5rem;
+    scale: 0.62;
     z-index: 200;
   }
   body .left-container .card-back {
     position: absolute;
-    right: -5rem;
+    right: -5.5rem;
     top: -2.5rem;
-    scale: 0.6;
+    scale: 0.62;
   }
   body .right-container {
     width: unset;
@@ -221,5 +268,8 @@ body .right-container .card-form #confirm-button {
   body .right-container .card-form {
     scale: 1;
     width: unset;
+  }
+  body .complete-state-container {
+    scale: 1;
   }
 }/*# sourceMappingURL=style.css.map */

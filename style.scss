@@ -2,6 +2,7 @@ $White: hsl(0, 0%, 100%);
 $Light-grayish-violet: hsl(270, 3%, 87%);
 $Dark-grayish-violet: hsl(279, 6%, 55%);
 $Very-dark-violet: hsl(278, 68%, 11%);
+$input-errors: hsl(0, 100%, 66%);
 $gap: 1rem;
 
 @mixin flexbox(
@@ -55,12 +56,17 @@ $gap: 1rem;
   box-sizing: border-box;
 }
 body {
-  min-height: 100vh;
-}
-body {
   @include flexbox($alignItems: center);
   background: url("../images/bg-main-desktop.png") no-repeat;
   background-size: 33% 100%;
+  min-height: 100vh;
+  .show-menus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+  }
   .left-container {
     @include flexbox($alignItems: center, $direction: column);
     gap: 2rem;
@@ -122,25 +128,45 @@ body {
   .right-container {
     @include flexbox($alignItems: center, $justifyContent: center);
     width: 50%;
+    .buttons {
+      font-size: 16px;
+      grid-column: 2 span;
+      color: $White;
+      background-color: $Very-dark-violet;
+      height: 50px;
+      margin-top: $gap;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
     .card-form {
       display: grid;
       grid-template-columns: repeat(2, minmax(10px, 1fr));
       gap: $gap;
       width: 350px;
+      animation: none;
       .inputs {
         padding: 0.6rem 0.8rem;
         font-size: 18px;
         border: 1px solid $Light-grayish-violet;
         border-radius: 0.375rem;
-      }
-      .inputs::placeholder {
-        color: $Light-grayish-violet;
+        &:focus {
+          outline: none;
+          border: double 1px transparent;
+          background-image: linear-gradient(white, white), 
+                            linear-gradient(to right, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+          background-origin: border-box;
+          background-clip: padding-box, border-box;
+        }
+        &::placeholder {
+          color: $Light-grayish-violet;
+        }
       }
       .shake {
         animation: shake 0.5s;
       }
       .input-error-border {
-        border: 1px red solid;
+        border: 1px $input-errors solid;
       }
       .labels {
         display: block;
@@ -174,15 +200,27 @@ body {
         @include flexbox($direction: column);
         grid-column: 1 span;
       }
-      #confirm-button {
-        font-size: 16px;
-        grid-column: 2 span;
-        color: $White;
-        background-color: $Very-dark-violet;
-        height: 50px;
-        margin-top: $gap;
-        border-radius: 0.5rem;
-        border: none;
+    }
+    .complete-state-container {
+      @include flexbox($direction: column, $justifyContent:center, $alignItems:center);
+      flex-basis: 375px;
+      min-width: 325px;
+      gap: 15px;
+      img {
+        margin-bottom: 16px;
+      }
+      >span:nth-child(2) {
+        color: $Very-dark-violet;
+        font-size: 27px;
+        letter-spacing: 4px;
+      }
+      >span:nth-child(3) {
+        color: $Dark-grayish-violet;
+        font-size: 18px;
+      }
+      button {
+        margin-top: 30px;
+        width: 100%;
       }
     }
   }
@@ -213,8 +251,14 @@ body {
     transform: translateX(0);
   }
 }
+@keyframes dissapear {
+  100% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+}
 .error {
-  color: red;
+  color: $input-errors;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -224,6 +268,9 @@ body {
   }
   body .right-container .card-form {
     left: 4%;
+  }
+  .complete-state-container {
+    scale: 0.85;
   }
 }
 @media only screen and (max-width: 750px) {
@@ -235,18 +282,18 @@ body {
     .left-container {
       scale: 1;
       width: 100%;
-      min-height: 300px;
+      min-height: 270px;
       .card-front {
         position: absolute;
-        inset: 14% -5.5rem;
-        scale: 0.6;
+        inset: 17% -5.5rem;
+        scale: 0.62;
         z-index: 200;
       }
       .card-back {
         position: absolute;
-        right: -5rem;
+        right: -5.5rem;
         top: -2.5rem;
-        scale: 0.6;
+        scale: 0.62;
       }
     }
     .right-container {
@@ -256,6 +303,9 @@ body {
         scale: 1;
         width: unset;
       }
+    }
+    .complete-state-container {
+      scale: 1;
     }
   }
 }
