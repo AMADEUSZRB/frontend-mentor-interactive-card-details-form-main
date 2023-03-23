@@ -9,7 +9,6 @@ const YearInput = document.querySelector("#year-exp-date-input");
 const Year = document.querySelector("#year-exp-date");
 const cvcInput = document.querySelector("#cvc-input");
 const cvc = document.querySelector("#cvc");
-
 form.addEventListener('submit', e => {
     e.preventDefault();
     validateCardNumber(creditCardInput.value);
@@ -22,7 +21,6 @@ form.addEventListener('submit', e => {
         form.addEventListener("animationend", () => {
             form.style.display = "none";
             document.querySelector(".right-container").innerHTML = completeStateContainer();
-            
         })
     }
 });
@@ -31,11 +29,12 @@ const completeStateContainer = (message = 'THANK YOU!',details = "We've added yo
     <img src="./images/icon-complete.svg" />
     <span>${message}</span>
     <span>${details}</span>
-    <button class="buttons">
+    <button class="buttons" type="reset" onclick="location.reload()">
       Continue</button>
     </div>`;
 }
-const setError = (element, message) => {
+
+const showError = (element, message) => {
     const inputControl = element.parentElement;
     let errorDisplay;
     
@@ -49,14 +48,14 @@ const setError = (element, message) => {
     
     
     errorDisplay.innerText = message;
-    element.classList.add('input-error-border');
+    element.classList.add('input-error-border');Error
     element.classList.add('shake');
     setTimeout(() => {
     element.classList.remove('shake');
     }, 750);
     }
 
-const setSuccess = (element) => {
+const showSuccess = (element) => {
     let inputControl = element.parentElement;
     while (inputControl && !inputControl.querySelector('.error')) {
         inputControl = inputControl.parentElement;
@@ -71,13 +70,13 @@ const setSuccess = (element) => {
 function validateCardHolderName(name) {
     const regex = /^[a-zA-Z\s]*$/;
     if (name !== "" && regex.test(name)) {
-        setSuccess(cardHolderInput);
+        showSuccess(cardHolderInput);
         return true;
     } else if (name == '') {
-        setError(cardHolderInput, "Can't be blank");
+        showError(cardHolderInput, "Can't be blank");
         return false;
     } else {
-        setError(cardHolderInput, "Wrong Format");
+        showError(cardHolderInput, "Wrong Format");
         return false;
     }
 }
@@ -85,13 +84,13 @@ function validateCardHolderName(name) {
 function validateCardNumber(number) {
     const regex = /[0-9 ]+/;
     if (number != "" && regex.test(number) && number.length == '19') {
-        setSuccess(creditCardInput);
+        showSuccess(creditCardInput);
         return true;
     } else if (number == '') {
-        setError(creditCardInput, "Can't be blank");
+        showError(creditCardInput, "Can't be blank");
         return false;
     } else {
-        setError(creditCardInput, "Wrong Format");
+        showError(creditCardInput, "Wrong Format");
         return false;
     }
 }
@@ -99,39 +98,39 @@ function validateCardNumber(number) {
 function validateExpiryMonth(month) {
     const regex = /^(0?[1-9]|1[012])$/;
     if (month != "" && regex.test(month) && month.length == '2') {
-        setSuccess(MonthInput);
+        showSuccess(MonthInput);
         return true;
     } else if (month == '') {
-        setError(MonthInput, "Can't be blank");
+        showError(MonthInput, "Can't be blank");
         return false;
     } else {
-        setError(MonthInput, "Wrong Format");
+        showError(MonthInput, "Wrong Format");
         return false;
     }
 }
 function validateExpiryYear(year) {
     const regex = /^(0?[1-9]|[1-9][0-9])$/;
     if (year != "" && regex.test(year) && year.length == '2') {
-        setSuccess(YearInput);
+        showSuccess(YearInput);
         return true;
     } else if (year == '') {
-        setError(YearInput, "Can't be blank");
+        showError(YearInput, "Can't be blank");
         return false;
     } else {
-        setError(YearInput, "Wrong Format");
+        showError(YearInput, "Wrong Format");
         return false;
     }
 }
 function validateCVC(cvc) {
     const regex = /^[0-9]*$/;
     if (cvc != "" && regex.test(cvc) && cvc.length == '3') {
-        setSuccess(cvcInput);
+        showSuccess(cvcInput);
         return true;
     } else if (cvc == '') {
-        setError(cvcInput, "Can't be blank");
+        showError(cvcInput, "Can't be blank");
         return false;
     } else {
-        setError(cvcInput, "Wrong Format");
+        showError(cvcInput, "Wrong Format");
         return false;
     }
 }
